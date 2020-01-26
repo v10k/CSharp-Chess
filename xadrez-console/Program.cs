@@ -1,6 +1,6 @@
 ﻿using System;
-using xadrez;
 using tabuleiro;
+using xadrez;
 
 namespace xadrez_console {
     class Program {
@@ -8,12 +8,19 @@ namespace xadrez_console {
             try {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                while(!partida.terminada) {
+                while (!partida.terminada) {
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+
+
                     Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
