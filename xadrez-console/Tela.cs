@@ -5,43 +5,43 @@ using xadrez;
 namespace xadrez_console {
     class Tela {
         
-        public static void imprimirTabuleiro(Tabuleiro tab) {
-            for (int i = 0; i < tab.linhas; i++) {
+        public static void ImprimirTabuleiro(Tabuleiro tab) {
+            for (int i = 0; i < tab.Linhas; i++) {
                 Console.Write(8 - i + " ");
-                for (int j = 0; j < tab.colunas; j++) {
-                    imprimirPeca(tab.peca(i, j));
+                for (int j = 0; j < tab.Colunas; j++) {
+                    ImprimirPeca(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
             char colunaIndice = 'a';
-            for (int i = 0; i < tab.colunas; i++) {
+            for (int i = 0; i < tab.Colunas; i++) {
                 string retorno = (i == 0) ? $"  {colunaIndice}" : $" {(char) (colunaIndice + i)}";
                 Console.Write(retorno);
             }
             Console.WriteLine("\n");
         }
 
-        public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis) {
+        public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis) {
 
             ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoAlterado = ConsoleColor.DarkBlue;
 
-            for (int i = 0; i < tab.linhas; i++) {
+            for (int i = 0; i < tab.Linhas; i++) {
                 Console.Write(8 - i + " ");
-                for (int j = 0; j < tab.colunas; j++) {
+                for (int j = 0; j < tab.Colunas; j++) {
                     if (posicoesPossiveis[i, j]) {
                         Console.BackgroundColor = fundoAlterado;
                     } 
                     else {
                         Console.BackgroundColor = fundoOriginal;
                     }
-                    imprimirPeca(tab.peca(i, j));
+                    ImprimirPeca(tab.Peca(i, j));
                     Console.BackgroundColor = fundoOriginal;
                 }
                 Console.WriteLine();
             }
             char colunaIndice = 'a';
-            for (int i = 0; i < tab.colunas; i++) {
+            for (int i = 0; i < tab.Colunas; i++) {
                 string retorno = (i == 0) ? $"  {colunaIndice}" : $" {(char)(colunaIndice + i)}";
                 Console.Write(retorno);
             }
@@ -50,13 +50,13 @@ namespace xadrez_console {
 
 
 
-        public static void imprimirPeca(Peca peca) {
+        public static void ImprimirPeca(Peca peca) {
 
             if (peca == null) {
                 Console.Write("- ");
             }
             else { 
-                if (peca.cor == Cor.Branca) {
+                if (peca.Cor == Cor.Branca) {
                     Console.Write($"{peca} ");
                 }
                 else {
@@ -68,7 +68,7 @@ namespace xadrez_console {
             }
         }
 
-        public static PosicaoXadrez lerPosicaoXadrez() {
+        public static PosicaoXadrez LerPosicaoXadrez() {
             string s = Console.ReadLine();
             char coluna = s[0];
             int linha = int.Parse(s[1] + "");

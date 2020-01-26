@@ -1,21 +1,21 @@
 ﻿namespace tabuleiro {
     class Posicao {
 
-        public int linha { get; set; }
-        public int coluna { get; set; }
+        public int Linha { get; set; }
+        public int Coluna { get; set; }
 
         public Posicao(int linha, int coluna) {
-            this.linha = linha;
-            this.coluna = coluna;
+            Linha = linha;
+            Coluna = coluna;
         }
 
-        public void definirValor(int linha, int coluna) {
-            this.linha = linha;
-            this.coluna = coluna;
+        public void DefinirValor(int linha, int coluna) {
+            Linha = linha;
+            Coluna = coluna;
         }
 
         public override string ToString() {
-            return $"{this.linha},{this.coluna}";
+            return $"{Linha},{Coluna}";
         }
 
     }
