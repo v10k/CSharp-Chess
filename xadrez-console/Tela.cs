@@ -1,5 +1,6 @@
 ﻿using System;
 using tabuleiro;
+using xadrez;
 
 namespace xadrez_console {
     class Tela {
@@ -11,7 +12,6 @@ namespace xadrez_console {
                         Console.Write("- ");
                     } else {
                         Tela.imprimirPeca(tab.peca(i, j));
-                        Console.Write(" ");
                     }
                 }
                 Console.WriteLine();
@@ -21,6 +21,7 @@ namespace xadrez_console {
                 string retorno = (i == 0) ? $"  {colunaIndice}" : $" {(char) (colunaIndice + i)}";
                 Console.Write(retorno.ToUpper());
             }
+            Console.WriteLine("\n");
         }
 
         public static void imprimirPeca(Peca peca) {
@@ -30,9 +31,16 @@ namespace xadrez_console {
             else {
                 ConsoleColor aux = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(peca);
+                Console.Write($"{peca} ");
                 Console.ForegroundColor = aux;
             }
+        }
+
+        public static PosicaoXadrez lerPosicaoXadrez() {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
         }
     }
 }
