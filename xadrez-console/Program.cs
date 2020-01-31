@@ -7,7 +7,6 @@ namespace xadrez_console {
         static void Main(string[] args) {
             try {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
-
                 while (!partida.Terminada) {
                     try { 
                         Console.Clear();
@@ -31,6 +30,14 @@ namespace xadrez_console {
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
+                    catch (IndexOutOfRangeException e) {
+                        Console.WriteLine("Insira um comando válido");
+                        Console.ReadLine();
+                    }
+                    catch (FormatException e) {
+                        Console.WriteLine("Insira um comando válido");
+                        Console.ReadLine();
+                    }
                 }
                 Console.Clear();
                 Tela.ImprimirPartida(partida);
@@ -39,6 +46,7 @@ namespace xadrez_console {
             catch (TabuleiroException e) {
                 Console.WriteLine(e.Message);
             }
+          
         }
     }
 }
